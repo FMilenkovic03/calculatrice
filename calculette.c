@@ -31,14 +31,20 @@ int main() {
     int choix;
     float a, b, res;
     char continuer;
+    bool utiliser_resultat = false;
 
     printf("Bienvenue dans la calculatrice.\n");
 
     do {
-        printf("\nEntrez le premier nombre : ");
-        while (scanf("%f", &a) != 1) {
-            printf("Entrée invalide pour le premier nombre.\n");
-            while (getchar() != '\n');
+        if(!utiliser_resultat){
+            printf("\nEntrez le premier nombre : ");
+            while (scanf("%f", &a) != 1) {
+                printf("Entrée invalide pour le premier nombre.\n");
+                while (getchar() != '\n');
+            }
+        }else{
+            a = res;  // Utiliser le dernier résultat comme premier opérande
+            printf("\nUtiliser le dernier résultat (%.2f) comme premier nombre.\n", a);
         }
 
         printf("Entrez le deuxième nombre : ");
@@ -84,8 +90,10 @@ int main() {
 
         printf("\nSouhaitez-vous effectuer un autre calcul ? (o/n) : ");
         scanf(" %c", &continuer);  // Note l'espace avant %c pour ignorer les espaces blancs
+        utiliser_resultat = (continuer == 'o' || continuer == 'O');
 
-    } while (continuer == 'o' || continuer == 'O');
+
+    } while (utiliser_resultat);
 
     printf("Merci d'avoir utilisé la calculatrice. Au revoir !\n");
 
