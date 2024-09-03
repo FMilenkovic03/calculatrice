@@ -38,13 +38,13 @@ int main() {
         printf("\nEntrez le premier nombre : ");
         if (scanf("%f", &a) != 1) {
             printf("Entrée invalide pour le premier nombre.\n");
-            return 0;
+            return 1;
         }
 
         printf("Entrez le deuxième nombre : ");
         if (scanf("%f", &b) != 1) {
             printf("Entrée invalide pour le deuxième nombre.\n");
-            return 0;
+            return 1;
         }
 
         printf("Choisissez l'opération à réaliser :\n");
@@ -55,7 +55,7 @@ int main() {
         printf("Entrez le numéro de l'opération : ");
         if (scanf("%d", &choix) != 1) {
             printf("Entrée invalide pour le choix d'opération.\n");
-            return 0;
+            return 1;
         }
 
         switch (choix) {
@@ -79,7 +79,7 @@ int main() {
                 break;
             default:
                 printf("Erreur : choix invalide. Veuillez entrer un numéro entre 1 et 4.\n");
-                return 0;
+                return 1;
         }
 
         printf("\nSouhaitez-vous effectuer un autre calcul ? (o/n) : ");
