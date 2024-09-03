@@ -30,10 +30,10 @@ float division(float a, float b){
 int main(){
 	int choix;
 	float a, b, res;
-	scanf("%f", &a);
-	scanf("%f", &b);
+	scanf("number a : %f", &a);
+	scanf("number b : %f", &b);
 
-	printf("écrivez 1 pour addition, 2 pour soustraction, 3 pour multiplication, 4 pour division");
+	printf("écrivez 1 pour addition, 2 pour soustraction, 3 pour multiplication, 4 pour division : ");
 	scanf("%d", &choix);
 	switch(choix)
 	{
