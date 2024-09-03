@@ -36,15 +36,15 @@ int main() {
 
     do {
         printf("\nEntrez le premier nombre : ");
-        if (scanf("%f", &a) != 1) {
+        while (scanf("%f", &a) != 1) {
             printf("Entrée invalide pour le premier nombre.\n");
-            return 1;
+            while (getchar() != '\n');
         }
 
         printf("Entrez le deuxième nombre : ");
-        if (scanf("%f", &b) != 1) {
+        while (scanf("%f", &b) != 1) {
             printf("Entrée invalide pour le deuxième nombre.\n");
-            return 1;
+            while (getchar() != '\n');
         }
 
         printf("Choisissez l'opération à réaliser :\n");
@@ -53,9 +53,9 @@ int main() {
         printf("3 - Multiplication\n");
         printf("4 - Division\n");
         printf("Entrez le numéro de l'opération : ");
-        if (scanf("%d", &choix) != 1) {
+        while (scanf("%d", &choix) != 1) {
             printf("Entrée invalide pour le choix d'opération.\n");
-            return 1;
+            while (getchar() != '\n');
         }
 
         switch (choix) {
