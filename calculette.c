@@ -27,15 +27,20 @@ float division(float a, float b) {
     return a / b;
 }
 
+void vider_buffer() {
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF);
+}
+
 int main() {
     int choix;
+    char option;
     float a, b, res;
-    char continuer;
+    bool continuer = true;
     bool utiliser_resultat = false;
 
     printf("Bienvenue dans la calculatrice.\n");
-
-    do {
+    while(true){
         if(!utiliser_resultat){
             printf("\nEntrez le premier nombre : ");
             while (scanf("%f", &a) != 1) {
@@ -45,12 +50,16 @@ int main() {
         }else{
             a = res;  // Utiliser le dernier résultat comme premier opérande
             printf("\nUtiliser le dernier résultat (%.2f) comme premier nombre.\n", a);
+            vider_buffer();  // Nettoyer le buffer
+
         }
 
         printf("Entrez le deuxième nombre : ");
         while (scanf("%f", &b) != 1) {
             printf("Entrée invalide pour le deuxième nombre.\n");
             while (getchar() != '\n');
+            vider_buffer();  // Nettoyer le buffer
+
         }
 
         printf("Choisissez l'opération à réaliser :\n");
@@ -61,7 +70,8 @@ int main() {
         printf("Entrez le numéro de l'opération : ");
         while (scanf("%d", &choix) != 1) {
             printf("Entrée invalide pour le choix d'opération.\n");
-            while (getchar() != '\n');
+            vider_buffer();  // Nettoyer le buffer
+
         }
 
         switch (choix) {
@@ -85,17 +95,39 @@ int main() {
                 break;
             default:
                 printf("Erreur : choix invalide. Veuillez entrer un numéro entre 1 et 4.\n");
-                return 1;
+                continuer;
         }
 
-        printf("\nSouhaitez-vous effectuer un autre calcul ? (o/n) : ");
-        scanf(" %c", &continuer);  // Note l'espace avant %c pour ignorer les espaces blancs
-        utiliser_resultat = (continuer == 'o' || continuer == 'O');
+        printf("\nQue souhaitez-vous faire ensuite ?\n");
+        printf("1 - Utiliser le dernier résultat comme premier nombre pour une nouvelle opération\n");
+        printf("2 - Entrer de nouveaux nombres pour une nouvelle opération\n");
+        printf("3 - Réinitialiser et recommencer\n");
+        printf("4 - Quitter\n");
+        printf("Entrez votre choix : ");
+        while (scanf(" %c", &option) != 1) {
+            printf("Entrée invalide pour le choix suivant.\n");
+            vider_buffer();  // Nettoyer le buffer
+        }
 
-
-    } while (utiliser_resultat);
-
-    printf("Merci d'avoir utilisé la calculatrice. Au revoir !\n");
-
+        switch (option) {
+            case '1':
+                utiliser_resultat = true;
+                break;
+            case '2':
+                utiliser_resultat = false;
+                break;
+            case '3':
+                utiliser_resultat = false;
+                a = b = res = 0;  // Réinitialiser les valeurs
+                break;
+            case '4':
+                printf("Merci d'avoir utilisé la calculatrice. Au revoir !\n");
+                return 0;
+            default:
+                printf("Option invalide. Veuillez entrer un numéro entre 1 et 4.\n");
+                break;
+        }
+    }
+    
     return 0;
 }
