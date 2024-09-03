@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 float addition(float a, float b);
 float soustraction(float a, float b);
