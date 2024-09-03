@@ -36,7 +36,6 @@ int main() {
     int choix;
     char option;
     float a, b, res;
-    bool continuer = true;
     bool utiliser_resultat = false;
 
     printf("Bienvenue dans la calculatrice.\n");
@@ -95,7 +94,7 @@ int main() {
                 break;
             default:
                 printf("Erreur : choix invalide. Veuillez entrer un numéro entre 1 et 4.\n");
-                continuer;
+                continue;
         }
 
         printf("\nQue souhaitez-vous faire ensuite ?\n");
