@@ -51,6 +51,9 @@ int main(){
 		case 4:
 			res = division(a, b);
 			break;
+		default:
+        	printf("Erreur : choix invalide.\n");
+        	return 1;  // Retourner un code d'erreur ou simplement continuer selon ton choix
 	}
 	printf("Le résultat est : %f\n", res);
 	return 0;
